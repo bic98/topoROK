@@ -1,0 +1,623 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.8": {
+      "DotSpatial.Data/3.0.1": {
+        "type": "package",
+        "dependencies": {
+          "DotSpatial.NTSExtension": "3.0.1",
+          "DotSpatial.Projections": "3.0.1",
+          "DotSpatial.Serialization": "3.0.1",
+          "NetTopologySuite": "2.4.0",
+          "System.Memory": "4.5.4",
+          "System.Numerics.Vectors": "4.5.0"
+        },
+        "compile": {
+          "lib/net472/DotSpatial.Data.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net472/DotSpatial.Data.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DotSpatial.Mono/1.9.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40-Client/DotSpatial.Mono.dll": {
+            "related": ".XML"
+          }
+        },
+        "runtime": {
+          "lib/net40-Client/DotSpatial.Mono.dll": {
+            "related": ".XML"
+          }
+        }
+      },
+      "DotSpatial.NTSExtension/3.0.1": {
+        "type": "package",
+        "dependencies": {
+          "NetTopologySuite": "2.4.0",
+          "System.Memory": "4.5.4",
+          "System.Numerics.Vectors": "4.5.0"
+        },
+        "compile": {
+          "lib/net472/DotSpatial.NTSExtension.dll": {
+            "related": ".XML"
+          }
+        },
+        "runtime": {
+          "lib/net472/DotSpatial.NTSExtension.dll": {
+            "related": ".XML"
+          }
+        }
+      },
+      "DotSpatial.Projections/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net472/DotSpatial.Projections.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net472/DotSpatial.Projections.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DotSpatial.Serialization/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net472/DotSpatial.Serialization.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net472/DotSpatial.Serialization.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DotSpatial.Symbology/3.0.1": {
+        "type": "package",
+        "dependencies": {
+          "DotSpatial.Data": "3.0.1",
+          "DotSpatial.NTSExtension": "3.0.1",
+          "DotSpatial.Projections": "3.0.1",
+          "DotSpatial.Serialization": "3.0.1",
+          "NetTopologySuite": "2.4.0",
+          "System.Memory": "4.5.4",
+          "System.Numerics.Vectors": "4.5.0"
+        },
+        "compile": {
+          "lib/net472/DotSpatial.Symbology.dll": {
+            "related": ".XML"
+          }
+        },
+        "runtime": {
+          "lib/net472/DotSpatial.Symbology.dll": {
+            "related": ".XML"
+          }
+        },
+        "resource": {
+          "lib/net472/de-DE/DotSpatial.Symbology.resources.dll": {
+            "locale": "de-DE"
+          }
+        }
+      },
+      "DotSpatial.Topology/1.9.0": {
+        "type": "package",
+        "dependencies": {
+          "DotSpatial.Serialization": "(, )"
+        },
+        "compile": {
+          "lib/net40-Client/DotSpatial.Topology.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net40-Client/DotSpatial.Topology.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Grasshopper/7.13.21348.13001": {
+        "type": "package",
+        "dependencies": {
+          "RhinoCommon": "[7.13.21348.13001]"
+        },
+        "compile": {
+          "lib/net48/GH_IO.dll": {
+            "related": ".XML"
+          },
+          "lib/net48/Grasshopper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net48/_._": {
+            "related": ".XML"
+          }
+        },
+        "build": {
+          "build/Grasshopper.targets": {}
+        }
+      },
+      "NetTopologySuite/2.4.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/NetTopologySuite.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/NetTopologySuite.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "RhinoCommon/7.13.21348.13001": {
+        "type": "package",
+        "compile": {
+          "lib/net48/Eto.dll": {
+            "related": ".xml"
+          },
+          "lib/net48/Rhino.UI.dll": {},
+          "lib/net48/RhinoCommon.dll": {
+            "related": ".XML"
+          }
+        },
+        "runtime": {
+          "lib/net48/_._": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/RhinoCommon.targets": {}
+        }
+      },
+      "System.Buffers/4.5.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net45/System.Buffers.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.Buffers.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Memory/4.5.4": {
+        "type": "package",
+        "dependencies": {
+          "System.Buffers": "4.5.1",
+          "System.Numerics.Vectors": "4.5.0",
+          "System.Runtime.CompilerServices.Unsafe": "4.5.3"
+        },
+        "frameworkAssemblies": [
+          "System",
+          "mscorlib"
+        ],
+        "compile": {
+          "lib/net461/System.Memory.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.Memory.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Numerics.Vectors/4.5.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Numerics",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net46/System.Numerics.Vectors.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net46/System.Numerics.Vectors.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/4.5.3": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net461/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DotSpatial.Data/3.0.1": {
+      "sha512": "0KhiUWLJrcYJcbGs+uXQhtFebvqvtl1SJeI8noqfo65LzZOiGSlrOuyn7wPW1sgbekT/SqcDj3e2HDg2T4/aAw==",
+      "type": "package",
+      "path": "dotspatial.data/3.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dotspatial.data.3.0.1.nupkg.sha512",
+        "dotspatial.data.nuspec",
+        "lib/net472/DotSpatial.Data.dll",
+        "lib/net472/DotSpatial.Data.xml"
+      ]
+    },
+    "DotSpatial.Mono/1.9.0": {
+      "sha512": "VysaGVbfx6Oz/rWVxwlTxOj3wsh/K/LRCl9+o0f+cC7ef+gcOPUnqiJvRpAGmp76mmuRJjr6YTxGcv5sfaDRjA==",
+      "type": "package",
+      "path": "dotspatial.mono/1.9.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dotspatial.mono.1.9.0.nupkg.sha512",
+        "dotspatial.mono.nuspec",
+        "lib/net40-Client/DotSpatial.Mono.XML",
+        "lib/net40-Client/DotSpatial.Mono.dll"
+      ]
+    },
+    "DotSpatial.NTSExtension/3.0.1": {
+      "sha512": "fI78OunFqf8Cv10a0VgvrxsNvb0xssr+F9+B58Q6dyZVjijyAp0rUTe09MiKAg3YUT9TQ0pTDoBXMK4zU2Rx4Q==",
+      "type": "package",
+      "path": "dotspatial.ntsextension/3.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dotspatial.ntsextension.3.0.1.nupkg.sha512",
+        "dotspatial.ntsextension.nuspec",
+        "lib/net472/DotSpatial.NTSExtension.XML",
+        "lib/net472/DotSpatial.NTSExtension.dll"
+      ]
+    },
+    "DotSpatial.Projections/3.0.1": {
+      "sha512": "8PLGQrTKv+MzPqmT1fAQslbppG5/6Sf35sr7fS5AFAOQLpMWfqpCONga7Q1BWVFjPa24CPLe0JdxtiN65pDwZw==",
+      "type": "package",
+      "path": "dotspatial.projections/3.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dotspatial.projections.3.0.1.nupkg.sha512",
+        "dotspatial.projections.nuspec",
+        "lib/net472/DotSpatial.Projections.dll",
+        "lib/net472/DotSpatial.Projections.xml"
+      ]
+    },
+    "DotSpatial.Serialization/3.0.1": {
+      "sha512": "uB/xAgPtK44aRLkGx0WuGyI64OYLb++IqIk83dUQwiFBq8hH84EbS42MhzaSBQVCHF5E+Pzr6T291oYygh9A5w==",
+      "type": "package",
+      "path": "dotspatial.serialization/3.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dotspatial.serialization.3.0.1.nupkg.sha512",
+        "dotspatial.serialization.nuspec",
+        "lib/net472/DotSpatial.Serialization.dll",
+        "lib/net472/DotSpatial.Serialization.xml"
+      ]
+    },
+    "DotSpatial.Symbology/3.0.1": {
+      "sha512": "eeRIXB8afQ1DF428CIGjCzycf8gzD0Yi208wBCovt//x65JXjquCfN3s+BloxPRBe4VmyP5yBmqgSHeft5IJHw==",
+      "type": "package",
+      "path": "dotspatial.symbology/3.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dotspatial.symbology.3.0.1.nupkg.sha512",
+        "dotspatial.symbology.nuspec",
+        "lib/net472/DotSpatial.Symbology.XML",
+        "lib/net472/DotSpatial.Symbology.dll",
+        "lib/net472/de-DE/DotSpatial.Symbology.resources.dll"
+      ]
+    },
+    "DotSpatial.Topology/1.9.0": {
+      "sha512": "tU/o3+U9xSThRuZWmkx8xzkRsPwtbS32sXAnCSZTyK6HHAC2j3RnyGTjFY09lFxYcueTI/CWQU7QCP73I+v3PQ==",
+      "type": "package",
+      "path": "dotspatial.topology/1.9.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dotspatial.topology.1.9.0.nupkg.sha512",
+        "dotspatial.topology.nuspec",
+        "lib/net40-Client/DotSpatial.Topology.dll",
+        "lib/net40-Client/DotSpatial.Topology.xml"
+      ]
+    },
+    "Grasshopper/7.13.21348.13001": {
+      "sha512": "XoxWouU2mzZAmj4kRP/ZqsKG+7e6Q+NBBitJSK/uxjuV8vNsGK2K19GW5ptDjjPuhd7GBI00KSB8Q1+JYFjELA==",
+      "type": "package",
+      "path": "grasshopper/7.13.21348.13001",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/Grasshopper.targets",
+        "grasshopper.7.13.21348.13001.nupkg.sha512",
+        "grasshopper.nuspec",
+        "grasshopper.png",
+        "lib/net48/GH_IO.XML",
+        "lib/net48/GH_IO.dll",
+        "lib/net48/Grasshopper.dll",
+        "lib/net48/Grasshopper.xml"
+      ]
+    },
+    "NetTopologySuite/2.4.0": {
+      "sha512": "dGA7ZcCRn664AcusGJdva5r+fvQ2mfUAaBX9QLC3fwtiFi05fEOLqzZ5tTg+MWF0xCy5iCaEDYAcxnB2eLJMdQ==",
+      "type": "package",
+      "path": "nettopologysuite/2.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/netstandard2.0/NetTopologySuite.dll",
+        "lib/netstandard2.0/NetTopologySuite.xml",
+        "nettopologysuite.2.4.0.nupkg.sha512",
+        "nettopologysuite.nuspec"
+      ]
+    },
+    "RhinoCommon/7.13.21348.13001": {
+      "sha512": "JQdaNw61ddBqIe08E9O4N/grwrN1hjDHcYW7tWylwCZyFR7SepoCD4NS+6LN6+oSQhNbhLi9Bf+hQOFYFdRAEA==",
+      "type": "package",
+      "path": "rhinocommon/7.13.21348.13001",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Eto-LICENSE.txt",
+        "build/RhinoCommon.targets",
+        "lib/net48/Eto.dll",
+        "lib/net48/Eto.xml",
+        "lib/net48/Rhino.UI.dll",
+        "lib/net48/RhinoCommon.XML",
+        "lib/net48/RhinoCommon.dll",
+        "rhinocommon.7.13.21348.13001.nupkg.sha512",
+        "rhinocommon.nuspec",
+        "rhinocommon.png"
+      ]
+    },
+    "System.Buffers/4.5.1": {
+      "sha512": "Rw7ijyl1qqRS0YQD/WycNst8hUUMgrMH4FCn1nNm27M4VxchZ1js3fVjQaANHO5f3sN4isvP4a+Met9Y4YomAg==",
+      "type": "package",
+      "path": "system.buffers/4.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Buffers.dll",
+        "lib/net461/System.Buffers.xml",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.1/System.Buffers.dll",
+        "lib/netstandard1.1/System.Buffers.xml",
+        "lib/netstandard2.0/System.Buffers.dll",
+        "lib/netstandard2.0/System.Buffers.xml",
+        "lib/uap10.0.16299/_._",
+        "ref/net45/System.Buffers.dll",
+        "ref/net45/System.Buffers.xml",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard1.1/System.Buffers.dll",
+        "ref/netstandard1.1/System.Buffers.xml",
+        "ref/netstandard2.0/System.Buffers.dll",
+        "ref/netstandard2.0/System.Buffers.xml",
+        "ref/uap10.0.16299/_._",
+        "system.buffers.4.5.1.nupkg.sha512",
+        "system.buffers.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Memory/4.5.4": {
+      "sha512": "1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
+      "type": "package",
+      "path": "system.memory/4.5.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Memory.dll",
+        "lib/net461/System.Memory.xml",
+        "lib/netcoreapp2.1/_._",
+        "lib/netstandard1.1/System.Memory.dll",
+        "lib/netstandard1.1/System.Memory.xml",
+        "lib/netstandard2.0/System.Memory.dll",
+        "lib/netstandard2.0/System.Memory.xml",
+        "ref/netcoreapp2.1/_._",
+        "system.memory.4.5.4.nupkg.sha512",
+        "system.memory.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Numerics.Vectors/4.5.0": {
+      "sha512": "QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
+      "type": "package",
+      "path": "system.numerics.vectors/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.Numerics.Vectors.dll",
+        "lib/net46/System.Numerics.Vectors.xml",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.0/System.Numerics.Vectors.dll",
+        "lib/netstandard1.0/System.Numerics.Vectors.xml",
+        "lib/netstandard2.0/System.Numerics.Vectors.dll",
+        "lib/netstandard2.0/System.Numerics.Vectors.xml",
+        "lib/portable-net45+win8+wp8+wpa81/System.Numerics.Vectors.dll",
+        "lib/portable-net45+win8+wp8+wpa81/System.Numerics.Vectors.xml",
+        "lib/uap10.0.16299/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/System.Numerics.Vectors.dll",
+        "ref/net45/System.Numerics.Vectors.xml",
+        "ref/net46/System.Numerics.Vectors.dll",
+        "ref/net46/System.Numerics.Vectors.xml",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard1.0/System.Numerics.Vectors.dll",
+        "ref/netstandard1.0/System.Numerics.Vectors.xml",
+        "ref/netstandard2.0/System.Numerics.Vectors.dll",
+        "ref/netstandard2.0/System.Numerics.Vectors.xml",
+        "ref/uap10.0.16299/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.numerics.vectors.4.5.0.nupkg.sha512",
+        "system.numerics.vectors.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Runtime.CompilerServices.Unsafe/4.5.3": {
+      "sha512": "3TIsJhD1EiiT0w2CcDMN/iSSwnNnsrnbzeVHSKkaEgV85txMprmuO+Yq2AdSbeVGcg28pdNDTPK87tJhX7VFHw==",
+      "type": "package",
+      "path": "system.runtime.compilerservices.unsafe/4.5.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net461/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "ref/net461/System.Runtime.CompilerServices.Unsafe.dll",
+        "ref/net461/System.Runtime.CompilerServices.Unsafe.xml",
+        "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "system.runtime.compilerservices.unsafe.4.5.3.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.8": [
+      "DotSpatial.Data >= 3.0.1",
+      "DotSpatial.Mono >= 1.9.0",
+      "DotSpatial.Projections >= 3.0.1",
+      "DotSpatial.Serialization >= 3.0.1",
+      "DotSpatial.Symbology >= 3.0.1",
+      "DotSpatial.Topology >= 1.9.0",
+      "Grasshopper >= 7.13.21348.13001"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\BaekInchan\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\BaekInchan\\RiderProjects\\topoROK\\topoROK\\topoROK\\topoROK.csproj",
+      "projectName": "topoROK",
+      "projectPath": "C:\\Users\\BaekInchan\\RiderProjects\\topoROK\\topoROK\\topoROK\\topoROK.csproj",
+      "packagesPath": "C:\\Users\\BaekInchan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\BaekInchan\\RiderProjects\\topoROK\\topoROK\\topoROK\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\BaekInchan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net48"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net48": {
+          "targetAlias": "net48",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net48": {
+        "targetAlias": "net48",
+        "dependencies": {
+          "DotSpatial.Data": {
+            "target": "Package",
+            "version": "[3.0.1, )"
+          },
+          "DotSpatial.Mono": {
+            "target": "Package",
+            "version": "[1.9.0, )"
+          },
+          "DotSpatial.Projections": {
+            "target": "Package",
+            "version": "[3.0.1, )"
+          },
+          "DotSpatial.Serialization": {
+            "target": "Package",
+            "version": "[3.0.1, )"
+          },
+          "DotSpatial.Symbology": {
+            "target": "Package",
+            "version": "[3.0.1, )"
+          },
+          "DotSpatial.Topology": {
+            "target": "Package",
+            "version": "[1.9.0, )"
+          },
+          "Grasshopper": {
+            "include": "Compile, Build",
+            "target": "Package",
+            "version": "[7.13.21348.13001, )"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.108\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

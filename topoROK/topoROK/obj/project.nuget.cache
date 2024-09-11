@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "dgSpecHash": "W7ykXWmFc1KzvEQKhW1OPy+fAoEHyfrt96iYcD+n9nyet/cRa98yeB3YKIRwFG67EuZ0uo8m+prugFO0qiAwIQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\BaekInchan\\RiderProjects\\topoROK\\topoROK\\topoROK\\topoROK.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\BaekInchan\\.nuget\\packages\\dotspatial.data\\3.0.1\\dotspatial.data.3.0.1.nupkg.sha512",
+    "C:\\Users\\BaekInchan\\.nuget\\packages\\dotspatial.mono\\1.9.0\\dotspatial.mono.1.9.0.nupkg.sha512",
+    "C:\\Users\\BaekInchan\\.nuget\\packages\\dotspatial.ntsextension\\3.0.1\\dotspatial.ntsextension.3.0.1.nupkg.sha512",
+    "C:\\Users\\BaekInchan\\.nuget\\packages\\dotspatial.projections\\3.0.1\\dotspatial.projections.3.0.1.nupkg.sha512",
+    "C:\\Users\\BaekInchan\\.nuget\\packages\\dotspatial.serialization\\3.0.1\\dotspatial.serialization.3.0.1.nupkg.sha512",
+    "C:\\Users\\BaekInchan\\.nuget\\packages\\dotspatial.symbology\\3.0.1\\dotspatial.symbology.3.0.1.nupkg.sha512",
+    "C:\\Users\\BaekInchan\\.nuget\\packages\\dotspatial.topology\\1.9.0\\dotspatial.topology.1.9.0.nupkg.sha512",
+    "C:\\Users\\BaekInchan\\.nuget\\packages\\grasshopper\\7.13.21348.13001\\grasshopper.7.13.21348.13001.nupkg.sha512",
+    "C:\\Users\\BaekInchan\\.nuget\\packages\\nettopologysuite\\2.4.0\\nettopologysuite.2.4.0.nupkg.sha512",
+    "C:\\Users\\BaekInchan\\.nuget\\packages\\rhinocommon\\7.13.21348.13001\\rhinocommon.7.13.21348.13001.nupkg.sha512",
+    "C:\\Users\\BaekInchan\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\BaekInchan\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\BaekInchan\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.3\\system.runtime.compilerservices.unsafe.4.5.3.nupkg.sha512"
+  ],
+  "logs": []
+}

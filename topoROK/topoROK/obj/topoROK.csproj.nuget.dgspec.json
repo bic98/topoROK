@@ -1,0 +1,84 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\BaekInchan\\RiderProjects\\topoROK\\topoROK\\topoROK\\topoROK.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\BaekInchan\\RiderProjects\\topoROK\\topoROK\\topoROK\\topoROK.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\BaekInchan\\RiderProjects\\topoROK\\topoROK\\topoROK\\topoROK.csproj",
+        "projectName": "topoROK",
+        "projectPath": "C:\\Users\\BaekInchan\\RiderProjects\\topoROK\\topoROK\\topoROK\\topoROK.csproj",
+        "packagesPath": "C:\\Users\\BaekInchan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\BaekInchan\\RiderProjects\\topoROK\\topoROK\\topoROK\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\BaekInchan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net48"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net48": {
+            "targetAlias": "net48",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net48": {
+          "targetAlias": "net48",
+          "dependencies": {
+            "DotSpatial.Data": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "DotSpatial.Mono": {
+              "target": "Package",
+              "version": "[1.9.0, )"
+            },
+            "DotSpatial.Projections": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "DotSpatial.Serialization": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "DotSpatial.Symbology": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "DotSpatial.Topology": {
+              "target": "Package",
+              "version": "[1.9.0, )"
+            },
+            "Grasshopper": {
+              "include": "Compile, Build",
+              "target": "Package",
+              "version": "[7.13.21348.13001, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.108\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
