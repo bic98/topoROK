@@ -1,0 +1,10 @@
+C:\Users\BaekInchan\AppData\Roaming\Grasshopper\Libraries\Debug\net48\topoBuilding.gha
+C:\Users\BaekInchan\AppData\Roaming\Grasshopper\Libraries\Debug\net48\topoBuilding.pdb
+C:\Users\BaekInchan\RiderProjects\topoROK\topoBuilding\topoBuilding\obj\Debug\net48\topoBuilding.csproj.AssemblyReference.cache
+C:\Users\BaekInchan\RiderProjects\topoROK\topoBuilding\topoBuilding\obj\Debug\net48\topoBuilding.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\BaekInchan\RiderProjects\topoROK\topoBuilding\topoBuilding\obj\Debug\net48\topoBuilding.AssemblyInfoInputs.cache
+C:\Users\BaekInchan\RiderProjects\topoROK\topoBuilding\topoBuilding\obj\Debug\net48\topoBuilding.AssemblyInfo.cs
+C:\Users\BaekInchan\RiderProjects\topoROK\topoBuilding\topoBuilding\obj\Debug\net48\topoBuilding.csproj.CoreCompileInputs.cache
+C:\Users\BaekInchan\RiderProjects\topoROK\topoBuilding\topoBuilding\obj\Debug\net48\topoBuilding.sourcelink.json
+C:\Users\BaekInchan\RiderProjects\topoROK\topoBuilding\topoBuilding\obj\Debug\net48\topoBuilding.gha
+C:\Users\BaekInchan\RiderProjects\topoROK\topoBuilding\topoBuilding\obj\Debug\net48\topoBuilding.pdb
