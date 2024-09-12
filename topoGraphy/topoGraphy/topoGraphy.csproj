@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <Version>1.0</Version>
+    <Title>topoGraphy</Title>
+    <Description>Description of topoGraphy</Description>
+    <TargetExt>.gha</TargetExt>
+    <BaseOutputPath>C:\Users\BaekInchan\AppData\Roaming\Grasshopper\Libraries</BaseOutputPath>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Grasshopper" Version="7.13.21348.13001" IncludeAssets="compile;build" />
+  </ItemGroup>
+
+</Project>

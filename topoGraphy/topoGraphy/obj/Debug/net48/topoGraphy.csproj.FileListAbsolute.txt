@@ -1,0 +1,10 @@
+C:\Users\BaekInchan\AppData\Roaming\Grasshopper\Libraries\Debug\net48\topoGraphy.gha
+C:\Users\BaekInchan\AppData\Roaming\Grasshopper\Libraries\Debug\net48\topoGraphy.pdb
+C:\Users\BaekInchan\RiderProjects\topoROK\topoGraphy\topoGraphy\obj\Debug\net48\topoGraphy.csproj.AssemblyReference.cache
+C:\Users\BaekInchan\RiderProjects\topoROK\topoGraphy\topoGraphy\obj\Debug\net48\topoGraphy.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\BaekInchan\RiderProjects\topoROK\topoGraphy\topoGraphy\obj\Debug\net48\topoGraphy.AssemblyInfoInputs.cache
+C:\Users\BaekInchan\RiderProjects\topoROK\topoGraphy\topoGraphy\obj\Debug\net48\topoGraphy.AssemblyInfo.cs
+C:\Users\BaekInchan\RiderProjects\topoROK\topoGraphy\topoGraphy\obj\Debug\net48\topoGraphy.csproj.CoreCompileInputs.cache
+C:\Users\BaekInchan\RiderProjects\topoROK\topoGraphy\topoGraphy\obj\Debug\net48\topoGraphy.sourcelink.json
+C:\Users\BaekInchan\RiderProjects\topoROK\topoGraphy\topoGraphy\obj\Debug\net48\topoGraphy.gha
+C:\Users\BaekInchan\RiderProjects\topoROK\topoGraphy\topoGraphy\obj\Debug\net48\topoGraphy.pdb
