@@ -346,7 +346,7 @@ namespace topoGraphy
             return nestedList;
         }
 
-        protected override System.Drawing.Bitmap Icon => null;
+        protected override System.Drawing.Bitmap Icon => Properties.Resources.paper; 
 
         public override Guid ComponentGuid => new Guid("6883fb68-c537-4432-b32b-6c8e32e639e1");
     }

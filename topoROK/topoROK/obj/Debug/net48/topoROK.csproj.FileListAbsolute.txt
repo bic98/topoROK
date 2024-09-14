@@ -18,3 +18,5 @@ C:\Users\BaekInchan\RiderProjects\topoROK\topoROK\topoROK\obj\Debug\net48\topoRO
 C:\Users\BaekInchan\RiderProjects\topoROK\topoROK\topoROK\obj\Debug\net48\topoROK.csproj.CopyComplete
 C:\Users\BaekInchan\RiderProjects\topoROK\topoROK\topoROK\obj\Debug\net48\topoROK.gha
 C:\Users\BaekInchan\RiderProjects\topoROK\topoROK\topoROK\obj\Debug\net48\topoROK.pdb
+C:\Users\BaekInchan\RiderProjects\topoROK\topoROK\topoROK\obj\Debug\net48\topoROK.Properties.Resources.resources
+C:\Users\BaekInchan\RiderProjects\topoROK\topoROK\topoROK\obj\Debug\net48\topoROK.csproj.GenerateResource.cache

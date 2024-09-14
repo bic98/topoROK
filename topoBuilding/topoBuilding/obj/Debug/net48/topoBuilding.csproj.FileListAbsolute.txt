@@ -5,6 +5,7 @@ C:\Users\BaekInchan\RiderProjects\topoROK\topoBuilding\topoBuilding\obj\Debug\ne
 C:\Users\BaekInchan\RiderProjects\topoROK\topoBuilding\topoBuilding\obj\Debug\net48\topoBuilding.AssemblyInfoInputs.cache
 C:\Users\BaekInchan\RiderProjects\topoROK\topoBuilding\topoBuilding\obj\Debug\net48\topoBuilding.AssemblyInfo.cs
 C:\Users\BaekInchan\RiderProjects\topoROK\topoBuilding\topoBuilding\obj\Debug\net48\topoBuilding.csproj.CoreCompileInputs.cache
-C:\Users\BaekInchan\RiderProjects\topoROK\topoBuilding\topoBuilding\obj\Debug\net48\topoBuilding.sourcelink.json
 C:\Users\BaekInchan\RiderProjects\topoROK\topoBuilding\topoBuilding\obj\Debug\net48\topoBuilding.gha
 C:\Users\BaekInchan\RiderProjects\topoROK\topoBuilding\topoBuilding\obj\Debug\net48\topoBuilding.pdb
+C:\Users\BaekInchan\RiderProjects\topoROK\topoBuilding\topoBuilding\obj\Debug\net48\topoBuilding.Properties.Resources.resources
+C:\Users\BaekInchan\RiderProjects\topoROK\topoBuilding\topoBuilding\obj\Debug\net48\topoBuilding.csproj.GenerateResource.cache

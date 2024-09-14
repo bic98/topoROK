@@ -103,13 +103,9 @@ namespace topoContour
 
             // Union all breps
             var union = Brep.JoinBreps(breps, 0.01);
-            MeshingParameters meshingParams = new MeshingParameters();
-            meshingParams.RefineGrid = true;
-            Mesh tmp = new Mesh();
-            var mesh = Mesh.CreateFromBrep(union[0], meshingParams);
-            tmp.Append(mesh);
-            Mesh cutted = tmp;
-
+            QuadRemeshParameters quadRemeshParams = new QuadRemeshParameters();
+            quadRemeshParams.TargetEdgeLength = 3.0; 
+            var cutted = Mesh.QuadRemeshBrep(union[0], quadRemeshParams); 
 
             var contourCurves = Mesh.CreateContourCurves(cutted, minZPoint, maxZPoint, zInterval, 0.001);
             int dist = (int)maxLength + 100;
@@ -118,7 +114,9 @@ namespace topoContour
             Parallel.For(0, contourCurves.Length, i =>
             {
                 var curve = contourCurves[i];
+                if(curve.IsClosed == false) return;
                 BoundingBox bb = curve.GetBoundingBox(false);
+                if(!bb.IsValid) return;
                 Plane plane = new Plane(bb.Center, Vector3d.ZAxis);
                 Surface planarSurface = new PlaneSurface(plane, new Interval(-dist, dist), new Interval(-dist, dist));
                 planarSurfaces[i] = planarSurface.ToBrep();
@@ -128,6 +126,7 @@ namespace topoContour
             Parallel.For(0, contourCurves.Length, i =>
             {
                 var curve = contourCurves[i];
+                if(curve.IsClosed == false) return;
                 if (AreaMassProperties.Compute(curve).Area < 1000) return;
                 Point3d now = curve.PointAtEnd;
                 Point3d nxt = MovePt(now, Vector3d.ZAxis, zInterval);
@@ -188,7 +187,7 @@ namespace topoContour
         /// You can add image files to your project resources and access them like this:
         /// return Resources.IconForThisComponent;
         /// </summary>
-        protected override System.Drawing.Bitmap Icon => null;
+        protected override System.Drawing.Bitmap Icon => Properties.Resources.topoContour; 
 
         /// <summary>
         /// Each component must have a unique Guid to identify it. 

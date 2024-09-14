@@ -5,6 +5,7 @@ C:\Users\BaekInchan\RiderProjects\topoROK\topoContour\topoContour\obj\Debug\net4
 C:\Users\BaekInchan\RiderProjects\topoROK\topoContour\topoContour\obj\Debug\net48\topoContour.AssemblyInfoInputs.cache
 C:\Users\BaekInchan\RiderProjects\topoROK\topoContour\topoContour\obj\Debug\net48\topoContour.AssemblyInfo.cs
 C:\Users\BaekInchan\RiderProjects\topoROK\topoContour\topoContour\obj\Debug\net48\topoContour.csproj.CoreCompileInputs.cache
-C:\Users\BaekInchan\RiderProjects\topoROK\topoContour\topoContour\obj\Debug\net48\topoContour.sourcelink.json
 C:\Users\BaekInchan\RiderProjects\topoROK\topoContour\topoContour\obj\Debug\net48\topoContour.gha
 C:\Users\BaekInchan\RiderProjects\topoROK\topoContour\topoContour\obj\Debug\net48\topoContour.pdb
+C:\Users\BaekInchan\RiderProjects\topoROK\topoContour\topoContour\obj\Debug\net48\topoContour.Properties.Resources.resources
+C:\Users\BaekInchan\RiderProjects\topoROK\topoContour\topoContour\obj\Debug\net48\topoContour.csproj.GenerateResource.cache

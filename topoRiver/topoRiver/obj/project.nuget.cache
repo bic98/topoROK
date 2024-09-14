@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "iYil1qaBtI25QusJ8yeADMGJicTMr9tZsKcjTXSAXskLvX4njqJVE+y3wgOvRQ4u7ud1k+oitbarAJ41bZSiVw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\BaekInchan\\RiderProjects\\topoROK\\topoRiver\\topoRiver\\topoRiver.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\BaekInchan\\.nuget\\packages\\grasshopper\\7.13.21348.13001\\grasshopper.7.13.21348.13001.nupkg.sha512",
+    "C:\\Users\\BaekInchan\\.nuget\\packages\\rhinocommon\\7.13.21348.13001\\rhinocommon.7.13.21348.13001.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -3,17 +3,9 @@ using Grasshopper.Kernel;
 using Rhino.Geometry;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Linq;
-using DotSpatial.Mono;
-using DotSpatial.Topology;
-using DotSpatial.Projections;
 using DotSpatial.Data;
-using DotSpatial.Serialization;
-using DotSpatial.Symbology;
 using Grasshopper.Kernel.Data;
-using Grasshopper.Kernel.Types;
 using FeatureType = DotSpatial.Data.FeatureType;
 
 namespace topoROK
@@ -30,7 +22,7 @@ namespace topoROK
         ///
         /// 
         public topoROKComponent()
-            : base("topo3D", "topo3D",
+            : base("topoSHP", "toposhp",
                 "Provides 3D representations of shapefiles from the National Geographic Information Institute of Korea.",
                 "topoKorea", "inputData")
         {
@@ -56,7 +48,7 @@ namespace topoROK
             pManager.AddCurveParameter("StreetLines", "SL", "street flat lines", GH_ParamAccess.tree);
             pManager.AddCurveParameter("Water Lines", "WL", "water flat lines", GH_ParamAccess.tree);
             pManager.AddPointParameter("Park Points", "P", "park pts", GH_ParamAccess.tree);
-            pManager.AddTextParameter("Test", "T", "test", GH_ParamAccess.tree);
+            pManager.AddTextParameter("Shapefile Dictionary", "Dict", "Shapefile dictionary contents", GH_ParamAccess.list);
         }
 
         /// <summary>
@@ -275,6 +267,11 @@ namespace topoROK
                 }
             }
             
+            List<string> outputList = shpFileDict
+                .SelectMany(kvp => kvp.Value.Select(v => $"{kvp.Key}: {v}")) // 키-값 쌍을 텍스트로 변환
+                .ToList();
+            
+            
 
             DataTree<Curve> topoTree = MakeDataTree2D(tmpTopoLines);
             DataTree<double> topoTreeZ = MakeDataTree2D(tmpTopoLinesZ);
@@ -283,7 +280,6 @@ namespace topoROK
             DataTree<Curve> streetTree = MakeDataTree2D(tmpStreetLines);
             DataTree<Curve> waterTree = MakeDataTree2D(tmpWaterLines);
             DataTree<Point3d> parkTree = MakeDataTree2D(tmpParkPoints);
-            DataTree<object> testTree = MakeDataTree2D(test);
             DA.SetDataTree(0, topoTree);
             DA.SetDataTree(1, topoTreeZ);
             DA.SetDataTree(2, buildingTree);
@@ -291,7 +287,7 @@ namespace topoROK
             DA.SetDataTree(4, streetTree);
             DA.SetDataTree(5, waterTree);
             DA.SetDataTree(6, parkTree);
-            DA.SetDataTree(7 , testTree); 
+            DA.SetDataList(7, outputList);
         }
 
         public static DataTree<T> MakeDataTree2D<T>(List<List<T>> ret)
@@ -330,7 +326,7 @@ namespace topoROK
         /// You can add image files to your project resources and access them like this:
         /// return Resources.IconForThisComponent;
         /// </summary>
-        protected override System.Drawing.Bitmap Icon => null;
+        protected override System.Drawing.Bitmap Icon => Properties.Resources.shpFile; 
 
         /// <summary>
         /// Each component must have a unique Guid to identify it. 

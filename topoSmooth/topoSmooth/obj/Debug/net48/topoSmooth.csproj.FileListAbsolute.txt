@@ -1,0 +1,11 @@
+C:\Users\BaekInchan\AppData\Roaming\Grasshopper\Libraries\Debug\net48\topoSmooth.gha
+C:\Users\BaekInchan\AppData\Roaming\Grasshopper\Libraries\Debug\net48\topoSmooth.pdb
+C:\Users\BaekInchan\RiderProjects\topoROK\topoSmooth\topoSmooth\obj\Debug\net48\topoSmooth.csproj.AssemblyReference.cache
+C:\Users\BaekInchan\RiderProjects\topoROK\topoSmooth\topoSmooth\obj\Debug\net48\topoSmooth.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\BaekInchan\RiderProjects\topoROK\topoSmooth\topoSmooth\obj\Debug\net48\topoSmooth.AssemblyInfoInputs.cache
+C:\Users\BaekInchan\RiderProjects\topoROK\topoSmooth\topoSmooth\obj\Debug\net48\topoSmooth.AssemblyInfo.cs
+C:\Users\BaekInchan\RiderProjects\topoROK\topoSmooth\topoSmooth\obj\Debug\net48\topoSmooth.csproj.CoreCompileInputs.cache
+C:\Users\BaekInchan\RiderProjects\topoROK\topoSmooth\topoSmooth\obj\Debug\net48\topoSmooth.gha
+C:\Users\BaekInchan\RiderProjects\topoROK\topoSmooth\topoSmooth\obj\Debug\net48\topoSmooth.pdb
+C:\Users\BaekInchan\RiderProjects\topoROK\topoSmooth\topoSmooth\obj\Debug\net48\topoSmooth.Properties.Resources.resources
+C:\Users\BaekInchan\RiderProjects\topoROK\topoSmooth\topoSmooth\obj\Debug\net48\topoSmooth.csproj.GenerateResource.cache
