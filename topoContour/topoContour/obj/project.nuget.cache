@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "ymfM4t4TafzmyXox9jZqPb1bMatVyF4U4OB0IydqaAmQLNUkhPEXVk3AFBXE5910koQyLDr+aGhv4Vc00WNeLA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\BaekInchan\\RiderProjects\\topoROK\\topoContour\\topoContour\\topoContour.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\BaekInchan\\.nuget\\packages\\grasshopper\\7.13.21348.13001\\grasshopper.7.13.21348.13001.nupkg.sha512",
+    "C:\\Users\\BaekInchan\\.nuget\\packages\\rhinocommon\\7.13.21348.13001\\rhinocommon.7.13.21348.13001.nupkg.sha512"
+  ],
+  "logs": []
+}
