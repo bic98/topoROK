@@ -1,0 +1,22 @@
+Instructions:
+
+1. Please extract the compressed file and place the contents in the following directory: C:\Users\YourUsername\AppData\Roaming\Grasshopper\Libraries.
+
+
+2. Place the "Debug" file in the directory mentioned above.
+
+
+3. Run the sample code provided.
+
+
+4. Specify the path for files in the format (B010)_DigitalMap_00. Multiple files can be selected, and the tool will automatically search for .shp files within the folder.
+
+
+5. The topoGraphy resolution parameter determines the terrain resolution. Higher values yield more detailed terrain but will take longer to process.
+topoContour may take a long time to process depending on your computer’s specifications. It is recommended to use a smaller, cropped area of the terrain.
+
+
+6. If the resulting surface from topoGraphy appears in an undesirable grid pattern, use topoSmooth to convert the surface to a mesh for a smoother appearance.
+
+
+7. For further inquiries, please contact bic0893@naver.com. (Authored by Inchan_Baek)
