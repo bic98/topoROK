@@ -6,8 +6,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Rhino;
-using System;
 
 namespace topoContour
 {
@@ -44,6 +42,7 @@ namespace topoContour
         {
             pManager.AddCurveParameter("contour", "contourCurve", "contour", GH_ParamAccess.list);
             pManager.AddBrepParameter("contourBrep", "contourBrep", "contourBrep", GH_ParamAccess.list);
+            
         }
 
         /// <summary>
@@ -104,51 +103,65 @@ namespace topoContour
             // Union all breps
             var union = Brep.JoinBreps(breps, 0.01);
             QuadRemeshParameters quadRemeshParams = new QuadRemeshParameters();
-            quadRemeshParams.TargetEdgeLength = 3.0; 
+            quadRemeshParams.TargetEdgeLength = 10.0; 
             var cutted = Mesh.QuadRemeshBrep(union[0], quadRemeshParams); 
 
             var contourCurves = Mesh.CreateContourCurves(cutted, minZPoint, maxZPoint, zInterval, 0.001);
-            int dist = (int)maxLength + 100;
-
-            Brep[] planarSurfaces = new Brep[contourCurves.Length];
-            Parallel.For(0, contourCurves.Length, i =>
-            {
-                var curve = contourCurves[i];
-                if(curve.IsClosed == false) return;
-                BoundingBox bb = curve.GetBoundingBox(false);
-                if(!bb.IsValid) return;
-                Plane plane = new Plane(bb.Center, Vector3d.ZAxis);
-                Surface planarSurface = new PlaneSurface(plane, new Interval(-dist, dist), new Interval(-dist, dist));
-                planarSurfaces[i] = planarSurface.ToBrep();
-            });
+            // int dist = (int)maxLength + 100;
+            //
+            // Brep[] planarSurfaces = new Brep[contourCurves.Length];
+            // Parallel.For(0, contourCurves.Length, i =>
+            // {
+            //     var curve = contourCurves[i];
+            //     if(curve.IsClosed == false) return;
+            //     BoundingBox bb = curve.GetBoundingBox(false);
+            //     if(!bb.IsValid) return;
+            //     Plane plane = new Plane(bb.Center, Vector3d.ZAxis);
+            //     Surface planarSurface = new PlaneSurface(plane, new Interval(-dist, dist), new Interval(-dist, dist));
+            //     planarSurfaces[i] = planarSurface.ToBrep();
+            // });
             ConcurrentBag<Brep> extrudedSurfaces = new ConcurrentBag<Brep>();
-
             Parallel.For(0, contourCurves.Length, i =>
             {
                 var curve = contourCurves[i];
                 if(curve.IsClosed == false) return;
-                if (AreaMassProperties.Compute(curve).Area < 1000) return;
+                if (AreaMassProperties.Compute(curve).Area < 300) return;
                 Point3d now = curve.PointAtEnd;
                 Point3d nxt = MovePt(now, Vector3d.ZAxis, zInterval);
-                Curve nxtCurve = curve.DuplicateCurve();
-                MoveOrientPoint(nxtCurve, now, nxt);
-                var sideSrf = NurbsSurface.CreateRuledSurface(curve, nxtCurve);
+                // Curve nxtCurve = curve.DuplicateCurve();
+                // MoveOrientPoint(nxtCurve, now, nxt);
+                // var sideSrf = NurbsSurface.CreateRuledSurface(curve, nxtCurve);
+                // if (sideSrf == null) return;
+                // var paper = planarSurfaces[i];
+                // var cutter = sideSrf.ToBrep();
+                // var cuttedSrf = paper.Split(cutter, 0.001);
+                //
+                // if (cuttedSrf != null && cuttedSrf.Length > 0)
+                // {
+                //     Brep caps = cuttedSrf.Last();
+                //     Brep caps2 = caps.DuplicateBrep(); 
+                //     MoveOrientPoint(caps, now, nxt);
+                //     // extrudedSurfaces.Add(caps);
+                //     // extrudedSurfaces.Add(cutter);
+                //     IEnumerable<Brep> tmp = new Brep[] { caps, cutter, caps2}; 
+                //     var joinbrep = Brep.JoinBreps(tmp, 0.001);
+                //     if (joinbrep != null)
+                //     {
+                //         extrudedSurfaces.Add(joinbrep[0]); 
+                //     }
+                // }
+                var sideSrf = Extrude(curve, zInterval);
                 if (sideSrf == null) return;
-                var paper = planarSurfaces[i];
-                var cutter = sideSrf.ToBrep();
-                var cuttedSrf = paper.Split(cutter, 0.001);
-                if (cuttedSrf != null && cuttedSrf.Length > 0)
-                {
-                    Brep caps = cuttedSrf.Last();
-                    MoveOrientPoint(caps, now, nxt);
-                    extrudedSurfaces.Add(caps);
-                    extrudedSurfaces.Add(cutter);
-                }
+                extrudedSurfaces.Add(sideSrf.ToBrep());
             });
             DA.SetDataList(0, contourCurves.ToList()); 
             DA.SetDataList(1, extrudedSurfaces.ToList());
         }
-
+        public static Extrusion Extrude(Curve curve, double height)
+        {
+            return Extrusion.Create(curve, height, true); // extrusion 생성 및 반환
+        }
+        
         public T MoveOrientPoint<T>(T obj, Point3d now, Point3d nxt) where T : GeometryBase
         {
             Plane baseNow = Plane.WorldXY;
