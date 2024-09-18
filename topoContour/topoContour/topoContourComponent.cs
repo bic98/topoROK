@@ -42,7 +42,6 @@ namespace topoContour
         {
             pManager.AddCurveParameter("contour", "contourCurve", "contour", GH_ParamAccess.list);
             pManager.AddBrepParameter("contourBrep", "contourBrep", "contourBrep", GH_ParamAccess.list);
-            
         }
 
         /// <summary>
@@ -56,16 +55,56 @@ namespace topoContour
             Surface TS = null;
             int zInterval = 10;
             bool Run = false;
+
             // Input
-            if (!DA.GetData(0, ref TS)) return;
-            if (!DA.GetData(1, ref zInterval)) return;
-            if (!DA.GetData(2, ref Run)) return;
-            // Process
-            if (!Run) return;
-            var edges = TS.ToBrep().Edges.ToList();
+            if (!DA.GetData(0, ref TS) || TS == null)
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid or missing topographical surface.");
+                return;
+            }
+
+            if (!DA.GetData(1, ref zInterval))
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid or missing zInterval.");
+                return;
+            }
+
+            if (!DA.GetData(2, ref Run) || !Run)
+            {
+                // Not running
+                return;
+            }
+
+            // Validate Surface
+            if (!TS.IsValid)
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Topographical surface is invalid.");
+                return;
+            }
+
+            // Convert Surface to Brep
+            Brep tsBrep = TS.ToBrep();
+            if (tsBrep == null)
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Failed to convert surface to Brep.");
+                return;
+            }
+
+            var edges = tsBrep.Edges;
+            if (edges == null || edges.Count == 0)
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Surface has no edges.");
+                return;
+            }
 
             // Get bounding box and its corners
-            BoundingBox bbox = TS.GetBoundingBox(true);
+            BoundingBox bbox = tsBrep.GetBoundingBox(true);
+            if (!bbox.IsValid)
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid bounding box.");
+                return;
+            }
+
             Point3d[] corners = bbox.GetCorners();
 
             // Find max and min Z points
@@ -75,21 +114,52 @@ namespace topoContour
 
             // Create a point below the min Z point
             Point3d boxStPt = new Point3d(minZPoint.X, minZPoint.Y, minZPoint.Z - 100);
-            Plane pl = Plane.WorldXY;
-            pl.Origin = boxStPt;
+            Plane pl = new Plane(boxStPt, Vector3d.ZAxis);
 
             // Initialize lists for breps and curves
-            List<Brep> breps = new List<Brep>() { TS.ToBrep() };
+            List<Brep> breps = new List<Brep>() { tsBrep };
             List<Curve> curves = new List<Curve>();
 
             double maxLength = 0.0;
-            foreach (var i in edges)
+
+            // Process edges
+            foreach (var edge in edges)
             {
-                Curve upCrv = i.DuplicateCurve();
+                if (edge == null)
+                    continue;
+
+                Curve upCrv = edge.DuplicateCurve();
+                if (upCrv == null || !upCrv.IsValid)
+                {
+                    AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Invalid edge curve encountered.");
+                    continue;
+                }
+
                 Curve dnCrv = Curve.ProjectToPlane(upCrv, pl);
-                var sideSrf = NurbsSurface.CreateRuledSurface(upCrv, dnCrv);
-                breps.Add(sideSrf.ToBrep());
+                if (dnCrv == null || !dnCrv.IsValid)
+                {
+                    AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Failed to project curve to plane.");
+                    continue;
+                }
+
+                // Create ruled surface between curves
+                Surface sideSrf = NurbsSurface.CreateRuledSurface(upCrv, dnCrv);
+                if (sideSrf == null)
+                {
+                    AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Failed to create ruled surface.");
+                    continue;
+                }
+
+                Brep sideBrep = sideSrf.ToBrep();
+                if (sideBrep == null)
+                {
+                    AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Failed to convert surface to Brep.");
+                    continue;
+                }
+
+                breps.Add(sideBrep);
                 curves.Add(dnCrv);
+
                 double length = dnCrv.GetLength();
                 if (length > maxLength)
                 {
@@ -98,101 +168,129 @@ namespace topoContour
             }
 
             // Create bottom surface
-            breps.Add(PlanarSrf(Curve.JoinCurves(curves)[0]));
+            Curve[] joinedCurves = Curve.JoinCurves(curves);
+            if (joinedCurves == null || joinedCurves.Length == 0)
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Failed to join curves for bottom surface.");
+                return;
+            }
+
+            Brep bottomBrep = PlanarSrf(joinedCurves[0]);
+            if (bottomBrep == null)
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Failed to create bottom planar surface.");
+                return;
+            }
+
+            breps.Add(bottomBrep);
 
             // Union all breps
-            var union = Brep.JoinBreps(breps, 0.01);
-            QuadRemeshParameters quadRemeshParams = new QuadRemeshParameters();
-            quadRemeshParams.TargetEdgeLength = 10.0; 
-            var cutted = Mesh.QuadRemeshBrep(union[0], quadRemeshParams); 
+            Brep[] union = Brep.JoinBreps(breps, 0.01);
+            if (union == null || union.Length == 0)
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Failed to union Breps.");
+                return;
+            }
 
-            var contourCurves = Mesh.CreateContourCurves(cutted, minZPoint, maxZPoint, zInterval, 0.001);
-            // int dist = (int)maxLength + 100;
-            //
-            // Brep[] planarSurfaces = new Brep[contourCurves.Length];
-            // Parallel.For(0, contourCurves.Length, i =>
-            // {
-            //     var curve = contourCurves[i];
-            //     if(curve.IsClosed == false) return;
-            //     BoundingBox bb = curve.GetBoundingBox(false);
-            //     if(!bb.IsValid) return;
-            //     Plane plane = new Plane(bb.Center, Vector3d.ZAxis);
-            //     Surface planarSurface = new PlaneSurface(plane, new Interval(-dist, dist), new Interval(-dist, dist));
-            //     planarSurfaces[i] = planarSurface.ToBrep();
-            // });
+            // Remesh the unioned brep
+            QuadRemeshParameters quadRemeshParams = new QuadRemeshParameters
+            {
+                TargetEdgeLength = 10.0
+            };
+            Mesh cutted = Mesh.QuadRemeshBrep(union[0], quadRemeshParams);
+            if (cutted == null)
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "QuadRemesh failed.");
+                return;
+            }
+
+            // Create contour curves
+            Curve[] contourCurves = Mesh.CreateContourCurves(cutted, minZPoint, maxZPoint, zInterval, 0.001);
+            if (contourCurves == null || contourCurves.Length == 0)
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Failed to create contour curves.");
+                return;
+            }
+
+            // Initialize collection for extruded surfaces
             ConcurrentBag<Brep> extrudedSurfaces = new ConcurrentBag<Brep>();
+
+            // Process contour curves
             Parallel.For(0, contourCurves.Length, i =>
             {
-                var curve = contourCurves[i];
-                if(curve.IsClosed == false) return;
-                if (AreaMassProperties.Compute(curve).Area < 300) return;
-                Point3d now = curve.PointAtEnd;
-                Point3d nxt = MovePt(now, Vector3d.ZAxis, zInterval);
-                // Curve nxtCurve = curve.DuplicateCurve();
-                // MoveOrientPoint(nxtCurve, now, nxt);
-                // var sideSrf = NurbsSurface.CreateRuledSurface(curve, nxtCurve);
-                // if (sideSrf == null) return;
-                // var paper = planarSurfaces[i];
-                // var cutter = sideSrf.ToBrep();
-                // var cuttedSrf = paper.Split(cutter, 0.001);
-                //
-                // if (cuttedSrf != null && cuttedSrf.Length > 0)
-                // {
-                //     Brep caps = cuttedSrf.Last();
-                //     Brep caps2 = caps.DuplicateBrep(); 
-                //     MoveOrientPoint(caps, now, nxt);
-                //     // extrudedSurfaces.Add(caps);
-                //     // extrudedSurfaces.Add(cutter);
-                //     IEnumerable<Brep> tmp = new Brep[] { caps, cutter, caps2}; 
-                //     var joinbrep = Brep.JoinBreps(tmp, 0.001);
-                //     if (joinbrep != null)
-                //     {
-                //         extrudedSurfaces.Add(joinbrep[0]); 
-                //     }
-                // }
-                var sideSrf = Extrude(curve, zInterval);
-                if (sideSrf == null) return;
-                extrudedSurfaces.Add(sideSrf.ToBrep());
+                try
+                {
+                    var curve = contourCurves[i];
+                    if (curve == null || !curve.IsValid || !curve.IsClosed)
+                    {
+                        // Skip invalid or open curves
+                        return;
+                    }
+
+                    var areaProps = AreaMassProperties.Compute(curve);
+                    if (areaProps == null || areaProps.Area < 30)
+                    {
+                        // Skip small area curves
+                        return;
+                    }
+
+                    // Extrude the curve
+                    Extrusion extrusion = Extrude(curve, zInterval);
+                    if (extrusion == null)
+                    {
+                        // Skip if extrusion fails
+                        return;
+                    }
+
+                    Brep brep = extrusion.ToBrep();
+                    if (brep == null)
+                    {
+                        // Skip if conversion to Brep fails
+                        return;
+                    }
+
+                    extrudedSurfaces.Add(brep);
+                }
+                catch (Exception ex)
+                {
+                    // Log exception details
+                    AddRuntimeMessage(GH_RuntimeMessageLevel.Warning,
+                        $"Error processing contour at index {i}: {ex.Message}");
+                }
             });
-            DA.SetDataList(0, contourCurves.ToList()); 
+
+            // Output results
+            DA.SetDataList(0, contourCurves.ToList());
             DA.SetDataList(1, extrudedSurfaces.ToList());
         }
+
         public static Extrusion Extrude(Curve curve, double height)
         {
-            return Extrusion.Create(curve, height, true); // extrusion 생성 및 반환
-        }
-        
-        public T MoveOrientPoint<T>(T obj, Point3d now, Point3d nxt) where T : GeometryBase
-        {
-            Plane baseNow = Plane.WorldXY;
-            Plane st = new Plane(now, baseNow.XAxis, baseNow.YAxis);
-            Plane en = new Plane(nxt, baseNow.XAxis, baseNow.YAxis);
-            Transform orient = Transform.PlaneToPlane(st, en);
-            obj.Transform(orient);
-            return obj;
+            if (curve == null || !curve.IsValid)
+                return null;
+
+            return Extrusion.Create(curve, height, true);
         }
 
         public Brep PlanarSrf(Curve c)
         {
-            string log;
-            Brep ret = null;
-            if (c.IsValidWithLog(out log) && c.IsPlanar() && c.IsClosed)
+            if (c == null || !c.IsValid || !c.IsPlanar() || !c.IsClosed)
             {
-                var tmp = Brep.CreatePlanarBreps(c, 0.01);
-                ret = tmp[0];
-                return ret;
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Invalid curve for PlanarSrf.");
+                return null;
             }
 
-            return ret;
+            Brep[] breps = Brep.CreatePlanarBreps(c, 0.01);
+            if (breps == null || breps.Length == 0)
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Failed to create planar Brep.");
+                return null;
+            }
+
+            return breps[0];
         }
 
-        public Point3d MovePt(Point3d p, Vector3d v, double amp)
-        {
-            v.Unitize();
-            Point3d newPoint = new Point3d(p);
-            newPoint.Transform(Transform.Translation(v * amp));
-            return newPoint;
-        }
+
 
         /// <summary>
         /// Provides an Icon for every component that will be visible in the User Interface.
@@ -200,7 +298,7 @@ namespace topoContour
         /// You can add image files to your project resources and access them like this:
         /// return Resources.IconForThisComponent;
         /// </summary>
-        protected override System.Drawing.Bitmap Icon => Properties.Resources.topoContour; 
+        protected override System.Drawing.Bitmap Icon => Properties.Resources.topoContour;
 
         /// <summary>
         /// Each component must have a unique Guid to identify it. 

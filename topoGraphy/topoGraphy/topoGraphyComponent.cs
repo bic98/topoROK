@@ -2,6 +2,7 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -43,7 +44,7 @@ namespace topoGraphy
             if (!DA.GetDataTree(1, out terrainLinesZ)) return;
             if (!DA.GetData(2, ref resolution)) return;
             if (!DA.GetData(3, ref run)) return;
-            
+
             if (!run) return;
 
             DataTree<Curve> terrainLinesCopy = new DataTree<Curve>();
@@ -61,6 +62,7 @@ namespace topoGraphy
                 List<double> numbers = branch.Select(ghNumber => ghNumber.Value).ToList();
                 terrainLinesZCopy.AddRange(numbers, path);
             }
+
             List<List<Curve>> topoLineList = ConvertTreeToNestedList(terrainLinesCopy);
             List<List<double>> topoHeightList = ConvertTreeToNestedList(terrainLinesZCopy);
             List<GeometryBase> gemoList = new List<GeometryBase>();
@@ -70,11 +72,11 @@ namespace topoGraphy
             {
                 if (topoLineList[i] == null || topoHeightList[i] == null) return;
 
-                Curve now = topoLineList[i][0].DuplicateCurve(); 
+                Curve now = topoLineList[i][0].DuplicateCurve();
                 if (now == null || !now.IsValid) return;
 
                 Curve nxt = now.DuplicateCurve();
-                double height = topoHeightList[i][0]; 
+                double height = topoHeightList[i][0];
                 Point3d st = now.PointAtStart;
                 Point3d en = MovePt(st, Vector3d.ZAxis, height);
                 MoveOrientPoint(nxt, st, en);
@@ -110,25 +112,33 @@ namespace topoGraphy
                 .Select(edge => edge.ToNurbsCurve())
                 .ToList();
 
+            // Create a thread-safe collection to store new points
+            ConcurrentBag<Point3d> newPoints = new ConcurrentBag<Point3d>();
+
             Parallel.For(0, findNearestCrv.Count, i =>
             {
                 var now = findNearestCrv[i];
                 double t;
-
-                Point3d closestPt = allDividePts.OrderBy(pt =>
+                Point3d closestPt;
+                lock (allDividePts)
                 {
-                    now.ClosestPoint(pt, out t);
-                    return now.PointAt(t).DistanceTo(pt);
-                }).First();
+                    closestPt = allDividePts.OrderBy(pt =>
+                    {
+                        now.ClosestPoint(pt, out t);
+                        return now.PointAt(t).DistanceTo(pt);
+                    }).First();
+                }
 
                 now.ClosestPoint(closestPt, out t);
                 var nxt = now.PointAt(t);
-
-                lock (allDividePts)
-                {
-                    allDividePts.Add(nxt);
-                }
+                newPoints.Add(nxt);
             });
+
+            lock (allDividePts)
+            {
+                allDividePts.AddRange(newPoints);
+            }
+
 
             var delMesh = CreateDelaunayMesh(allDividePts);
             int uCount = 0, vCount = 0;
@@ -321,7 +331,7 @@ namespace topoGraphy
         public Point3d MovePt(Point3d p, Vector3d v, double amp)
         {
             v.Unitize();
-            Point3d newPoint = new Point3d(p); 
+            Point3d newPoint = new Point3d(p);
             newPoint.Transform(Transform.Translation(v * amp));
             return newPoint;
         }
@@ -346,7 +356,7 @@ namespace topoGraphy
             return nestedList;
         }
 
-        protected override System.Drawing.Bitmap Icon => Properties.Resources.paper; 
+        protected override System.Drawing.Bitmap Icon => Properties.Resources.paper;
 
         public override Guid ComponentGuid => new Guid("6883fb68-c537-4432-b32b-6c8e32e639e1");
     }

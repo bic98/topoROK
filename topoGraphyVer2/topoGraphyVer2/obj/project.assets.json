@@ -1,0 +1,38 @@
+{
+  "version": 3,
+  "targets": {},
+  "libraries": {},
+  "projectFileDependencyGroups": {},
+  "packageFolders": {
+    "C:\\Users\\BaekInchan\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "restore": {
+      "projectUniqueName": "C:\\Users\\BaekInchan\\RiderProjects\\topoROK\\topoGraphyVer2\\topoGraphyVer2\\topoGraphyVer2.csproj",
+      "projectPath": "C:\\Users\\BaekInchan\\RiderProjects\\topoROK\\topoGraphyVer2\\topoGraphyVer2\\topoGraphyVer2.csproj",
+      "packagesPath": "C:\\Users\\BaekInchan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\BaekInchan\\RiderProjects\\topoROK\\topoGraphyVer2\\topoGraphyVer2\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\BaekInchan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      }
+    }
+  },
+  "logs": [
+    {
+      "code": "NU1105",
+      "level": "Error",
+      "message": "'topoGraphyVer2'에 대한 프로젝트 정보를 읽을 수 없습니다. 잘못된 프레임워크 식별자 ''입니다."
+    }
+  ]
+}
