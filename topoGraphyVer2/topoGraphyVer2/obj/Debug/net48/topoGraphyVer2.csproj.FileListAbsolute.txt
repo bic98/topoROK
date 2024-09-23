@@ -1,9 +1,0 @@
-C:\Users\BaekInchan\RiderProjects\topoROK\topoGraphyVer2\topoGraphyVer2\bin\Debug\net48\topoGraphyVer2.gha
-C:\Users\BaekInchan\RiderProjects\topoROK\topoGraphyVer2\topoGraphyVer2\bin\Debug\net48\topoGraphyVer2.pdb
-C:\Users\BaekInchan\RiderProjects\topoROK\topoGraphyVer2\topoGraphyVer2\obj\Debug\net48\topoGraphyVer2.csproj.AssemblyReference.cache
-C:\Users\BaekInchan\RiderProjects\topoROK\topoGraphyVer2\topoGraphyVer2\obj\Debug\net48\topoGraphyVer2.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\BaekInchan\RiderProjects\topoROK\topoGraphyVer2\topoGraphyVer2\obj\Debug\net48\topoGraphyVer2.AssemblyInfoInputs.cache
-C:\Users\BaekInchan\RiderProjects\topoROK\topoGraphyVer2\topoGraphyVer2\obj\Debug\net48\topoGraphyVer2.AssemblyInfo.cs
-C:\Users\BaekInchan\RiderProjects\topoROK\topoGraphyVer2\topoGraphyVer2\obj\Debug\net48\topoGraphyVer2.csproj.CoreCompileInputs.cache
-C:\Users\BaekInchan\RiderProjects\topoROK\topoGraphyVer2\topoGraphyVer2\obj\Debug\net48\topoGraphyVer2.gha
-C:\Users\BaekInchan\RiderProjects\topoROK\topoGraphyVer2\topoGraphyVer2\obj\Debug\net48\topoGraphyVer2.pdb

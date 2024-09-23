@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Description of topoContour")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+bcf8902e6fd0d4f69cb9fcd912e8dcebaf383c90")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+0a2f894c76f9640d3f1150fc98470bc77f87bf70")]
 [assembly: System.Reflection.AssemblyProductAttribute("topoContour")]
 [assembly: System.Reflection.AssemblyTitleAttribute("topoContour")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
